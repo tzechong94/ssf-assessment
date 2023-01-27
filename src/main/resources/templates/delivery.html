@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Your Order Info</h1>
+        <p data-th-object="${order}">
+            Name: <span data-th-text="*{pizzaName}"></span>
+            <br>
+            Size: <span data-th-text="*{pizzaSize}"></span>
+            <br>
+            Quantity: <span data-th-text="*{pizzaQuantity}"></span>
+            <br>
+        </p>
+    </div>
+
+
+    <div>
+        <form 
+        action="#" 
+        data-th-action="@{/delivery}" 
+        data-th-object="${delivery}" 
+        method="post">
+            <h2>Order Delivery Details</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            Name: 
+                        </td>
+                        <td>
+                            <input name="name" value="name" type="text" data-th-field="*{name}"> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Address: 
+                        </td>
+                        <td>
+                            <input name="address" value="address" type="text" data-th-field="*{address}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Phone: 
+                        </td>
+                        <td>
+                            <input name="phoneNumber" value="phoneNumber" type="number" 
+                            data-th-field="*{phoneNumber}">
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            Rush:
+                        </td>
+                        <td>
+                            <input name="rush" value="rush" type="checkbox"
+                            data-th-field="*{rush}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Comments: 
+                        </td>
+                        <td>
+                            <input name="comments" value="comments" type="text"
+                            data-th-field="*{comments}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button type="submit">Cancel Order</button>
+                            <button type="submit">Place Order</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+</body>
+</html>

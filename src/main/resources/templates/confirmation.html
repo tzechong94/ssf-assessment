@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Your Delivery Info</h1>
+        <p data-th-object="${delivery}">
+            Name: <span data-th-text="*{name}"></span>
+            <br>
+            address: <span data-th-text="*{address}"></span>
+            <br>
+            phoneNumber: <span data-th-text="*{phoneNumber}"></span>
+            <br>
+            rush: <span data-th-text="*{rush}"></span>
+            <br>
+            comments: <span data-th-text="*{comments}"></span>
+            <br>
+        </p>
+    </div>
+
+    
+</body>
+</html>
