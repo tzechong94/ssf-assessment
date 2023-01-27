@@ -20,15 +20,24 @@ public class PizzaController {
         return "form";
     }
 
-    @PostMapping(path="/order")
+    @PostMapping(path="/pizza")
     public String postOrder(@Valid Order order, BindingResult bindingResult,
     Model model) {
         if (bindingResult.hasErrors()){
             return "form";
-        } 
+        }
+        // model.addAttribute("order", order);
         model.addAttribute("delivery", new Delivery());
         return "delivery";
-    
+
     }
 
+    @PostMapping(path="/pizza/order")
+    public String postOrder(@Valid Delivery delivery, BindingResult bindingResult,
+    Model model) {
+        if (bindingResult.hasErrors()){
+            return "delivery";
+        } 
+        return "confirmation";
+    }
 }

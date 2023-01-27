@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <div>
+    <!-- <div>
         <h1>Your Order Info</h1>
         <p data-th-object="${order}">
             Name: <span data-th-text="*{pizzaName}"></span>
@@ -17,13 +17,11 @@
             Quantity: <span data-th-text="*{pizzaQuantity}"></span>
             <br>
         </p>
-    </div>
-
-
+    </div> -->
     <div>
         <form 
         action="#" 
-        data-th-action="@{/delivery}" 
+        data-th-action="@{/pizza/order}" 
         data-th-object="${delivery}" 
         method="post">
             <h2>Order Delivery Details</h2>
@@ -37,14 +35,20 @@
                             <input name="name" value="name" type="text" data-th-field="*{name}"> 
                         </td>
                     </tr>
+                    <span class="error" data-th-if="${#fields.hasErrors('name')}"
+					data-th-errors="*{name}"></span>
+                    <br>
                     <tr>
                         <td>
                             Address: 
                         </td>
                         <td>
-                            <input name="address" value="address" type="text" data-th-field="*{address}">
+                            <input name="deliveryAddress" value="deliveryAddress" type="text" data-th-field="*{deliveryAddress}">
                         </td>
                     </tr>
+                    <span class="error" data-th-if="${#fields.hasErrors('deliveryAddress')}"
+					data-th-errors="*{deliveryAddress}"></span>
+                    <br>
                     <tr>
                         <td>
                             Phone: 
@@ -54,7 +58,9 @@
                             data-th-field="*{phoneNumber}">
                         </td>
                     </tr>
-                    
+                    <span class="error" data-th-if="${#fields.hasErrors('phoneNumber')}"
+					data-th-errors="*{phoneNumber}"></span>
+                    <br>
                     <tr>
                         <td>
                             Rush:
@@ -64,6 +70,9 @@
                             data-th-field="*{rush}">
                         </td>
                     </tr>
+                    <span class="error" data-th-if="${#fields.hasErrors('rush')}"
+					data-th-errors="*{rush}"></span>
+                    <br>
                     <tr>
                         <td>
                             Comments: 
@@ -73,10 +82,13 @@
                             data-th-field="*{comments}"/>
                         </td>
                     </tr>
+                    <span class="error" data-th-if="${#fields.hasErrors('comments')}"
+					data-th-errors="*{comments}"></span>
+                    <br>
                     <tr>
                         <td></td>
                         <td>
-                            <button type="submit">Cancel Order</button>
+                            <button type="submit" th:formaction="@{/order}" value="cancel" >Cancel Order</button>
                             <button type="submit">Place Order</button>
                         </td>
                     </tr>
