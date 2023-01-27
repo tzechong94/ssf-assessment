@@ -1,5 +1,7 @@
 package com.example.assessment.model;
 
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Value;
 
 import jakarta.validation.constraints.NotBlank;
@@ -7,11 +9,40 @@ import jakarta.validation.constraints.Size;
 
 public class Delivery {
     
+    private String pizzaName;
+    private String size;
+    private Integer quantity;
+    private Float totalCost;
+
+    public String getPizzaName() {
+        return pizzaName;
+    }
+
+    public void setPizzaName(String pizzaName) {
+        this.pizzaName = pizzaName;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
     @NotBlank(message = "Name is mandatory.")
     @Size(min=3, message = "Name must have minimum 3 characters.")
     private String name;
 
-    // private String id;
+    private String id;
 
     @NotBlank(message = "Delivery Address is mandatory.")
     private String deliveryAddress;
@@ -24,15 +55,27 @@ public class Delivery {
 
     private String comments;
 
-    // public Delivery(String name, String deliveryAddress, String phoneNumber) {
-    //     this.id=generateId(8);
-    //     this.name= name;
-    //     this.deliveryAddress=deliveryAddress;
-    //     this.phoneNumber = phoneNumber;
+    private synchronized String generateId(int numOfChar) {
+        Random r = new Random();
+        StringBuilder strBuilder = new StringBuilder();
+        while(strBuilder.length() < numOfChar) {
+            strBuilder.append(Integer.toHexString(r.nextInt()));
+        }
+        return strBuilder.toString().substring(0,numOfChar);
+    }
 
-    // }
+    public Delivery(String pizzaName, String size, Integer quantity){
+        this.pizzaName = pizzaName;
+        this.size = size;
+        this.quantity = quantity;
+        this.id=generateId(8);
+    }
 
-    // private Integer totalCost;
+    public Delivery(){
+        this.id=generateId(8);
+    }
+
+
 
     public String getName() {
         return name;
@@ -83,12 +126,20 @@ public class Delivery {
         this.deliveryAddress = deliveryAddress;
     }
 
-    // public Integer getTotalCost() {
-    //     return totalCost;
-    // }
+    public String getId() {
+        return id;
+    }
 
-    // public void setTotalCost(Integer totalCost) {
-    //     this.totalCost = totalCost;
-    // }
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Float getTotalCost() {
+        return totalCost;
+    }
+
+    public void setTotalCost(Float totalCost) {
+        this.totalCost = totalCost;
+    }
 
 }

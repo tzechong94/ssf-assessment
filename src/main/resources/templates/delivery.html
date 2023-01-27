@@ -86,9 +86,12 @@
 					data-th-errors="*{comments}"></span>
                     <br>
                     <tr>
+                        <!-- <p name="size" value="size" type="size"  th:text="*{size}" data-th-field="*{size}"></p>
+                        <p name="pizzaName" value="pizzaName" type="pizzaName"  th:text="*{pizzaName}" data-th-field="*{pizzaName}">Size</p>
+                        <p name="quantity" value="quantity" type="quantity"  th:text="*{quantity}" data-th-field="*{quantity}">Size</p> -->
                         <td></td>
                         <td>
-                            <button type="submit" th:formaction="@{/order}" value="cancel" >Cancel Order</button>
+                            <button type="submit" th:formaction="@{/pizza}" value="cancel" >Cancel Order</button>
                             <button type="submit">Place Order</button>
                         </td>
                     </tr>

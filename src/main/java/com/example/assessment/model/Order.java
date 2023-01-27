@@ -41,6 +41,12 @@ public class Order {
         this.pizzaQuantity = pizzaQuantity;
     }
 
+    // public Order(String pizzaName, String pizzaSize, Integer pizzaQuantity) {
+    //     this.pizzaSize = pizzaSize;
+    //     this.pizzaName = pizzaName;
+    //     this.pizzaQuantity = pizzaQuantity;
+    // }
+
     
 
 }

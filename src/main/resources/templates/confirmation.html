@@ -8,18 +8,23 @@
 </head>
 <body>
     <div>
-        <h1>Your Delivery Info</h1>
-        <p data-th-object="${delivery}">
-            Name: <span data-th-text="*{name}"></span>
+        <h1>Delivery Details</h1>
+        <p>
+            Order Number: <span data-th-text="${delivery.id}"></span>
             <br>
-            address: <span data-th-text="*{deliveryAddress}"></span>
+            Your order will be delivered to: <span data-th-text="${delivery.deliveryAddress}"></span>
             <br>
-            phoneNumber: <span data-th-text="*{phoneNumber}"></span>
+            Pizza cost: <span data-th-text="${pizzaCost}"></span>
             <br>
-            rush: <span data-th-text="*{rush}"></span>
+            <span th:if="${delivery.rush}">Rush: $2</span>
             <br>
-            comments: <span data-th-text="*{comments}"></span>
+            Total Cost: <span data-th-text="${totalCost}"></span>
             <br>
+            <!-- <br>
+            pizza size: <span data-th-text="${customerOrder.pizzaSize}"></span>
+            <br>
+            pizza quantity: <span data-th-text="${customerOrder.pizzaQuantity}"></span> -->
+
         </p>
     </div>
 
