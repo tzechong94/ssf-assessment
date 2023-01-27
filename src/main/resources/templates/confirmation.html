@@ -10,7 +10,7 @@
     <div>
         <h1>Delivery Details</h1>
         <p>
-            Order Number: <a href=${delivery.id}><span data-th-text="${delivery.id}"></span></a>
+            Order Number: <a th:href="@{/order/{id}(id=${delivery.id})}"><span data-th-text="${delivery.id}"></span></a>
             <br>
             Your order will be delivered to: <span data-th-text="${delivery.deliveryAddress}"></span>
             <br>
