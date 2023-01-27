@@ -1,10 +1,12 @@
 package com.example.assessment.model;
 
+import java.io.Serializable;
+
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
-public class Order {
+public class Order implements Serializable {
     
     @NotNull(message = "Please select a pizza.")
     private String pizzaName;

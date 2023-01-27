@@ -1,5 +1,6 @@
 package com.example.assessment.model;
 
+import java.io.Serializable;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -7,7 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-public class Delivery {
+public class Delivery implements Serializable{
     
     private String pizzaName;
     private String size;

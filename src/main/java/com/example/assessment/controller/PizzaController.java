@@ -1,5 +1,6 @@
 package com.example.assessment.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -7,13 +8,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.assessment.model.Delivery;
+import com.example.assessment.model.JsonModel;
 import com.example.assessment.model.Order;
+import com.example.assessment.service.DeliveryService;
 
 import jakarta.validation.Valid;
 
 @Controller
 public class PizzaController {
     
+    @Autowired
+    DeliveryService deliverySvc;
+
     private float totalCost = 0;
     private float pizzaCost = 0;
 
@@ -61,7 +67,8 @@ public class PizzaController {
         model.addAttribute("delivery", delivery);
         model.addAttribute("pizzaCost", pizzaCost);
         model.addAttribute("totalCost", totalCost);
-
+        JsonModel j = new JsonModel(customerOrder, delivery, totalCost);
+        deliverySvc.saveOrder(j);
         return "confirmation";
     }
 
